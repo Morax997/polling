@@ -1,32 +1,7 @@
 import "./PollUnit.css";
 import {useState} from "react";
 
-const data = [
-  {
-    id: 1,
-    title: "What is your favorite season?",
-    options: [
-      {
-        id: 1,
-        label: "Spring",
-      },
-      {
-        id: 2,
-        label: "Summer",
-      },
-      {
-        id: 3,
-        label: "Fall",
-      },
-      {
-        id: 4,
-        label: "Winter",
-      },
-    ],
-  },
-];
-
-const PollUnit = () => {
+const PollUnit = (props) => {
   const [selectedOptionId, setSelectedOptionId] = useState(null);
 
   const clearOption = () => {
@@ -39,11 +14,11 @@ const PollUnit = () => {
     </div>
     <div className="pollContainer">
       <div className="pollTitle">
-        {data[0].title}
+        {props.pollData.title}
       </div>
       <div className="pollBars">
         {
-          data[0].options.map(option => {
+          props.pollData.options.map(option => {
             return <div
               key={option.id}
               className="pollOption"
